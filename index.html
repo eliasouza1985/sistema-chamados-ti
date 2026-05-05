@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Chamados TI & GLPI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+   <img src="imagens/logo.png" alt="Logo do Suporte" class="logo-sistema">
+
+    <div class="container">
+        <h1>Controle de Chamados Suporte</h1>
+        
+        <form id="chamadoForm">
+            
+            <h2>Cadastrar Novo Chamado</h2>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label for="cliente">Usuário (Cliente):</label>
+                    <input type="text" id="cliente" required placeholder="Nome do usuário">
+                </div>
+
+                <div class="form-group">
+                    <label for="tecnico">Técnico Responsável:</label>
+                    <select id="tecnico" required>
+                        <option value="">Selecione...</option>
+                        <option value="Elia">Elia Junior</option>
+                        <option value="Daniele">Daniele Sacramento</option>
+                        <option value="Raphael">Raphael</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="departamento">Departamento:</label>
+                    <select id="departamento" required>
+                        <option value="">Selecione...</option>
+                        <option value="Administrativo">Administrativo</option>
+                        <option value="Financeiro">Financeiro</option>
+                        <option value="RH">RH</option>
+                        <option value="Operações">Operações</option>
+                        <option value="TI">TI</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="data">Data de Abertura:</label>
+                    <input type="date" id="data" required>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label for="status">Status Interno:</label>
+                    <select id="status">
+                        <option value="Pendente">Pendente</option>
+                        <option value="Em Andamento">Em Andamento</option>
+                        <option value="Finalizado">Finalizado</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="chamadoGlpi">Nº Chamado GLPI:</label>
+                    <input type="text" id="chamadoGlpi" placeholder="Ex: 5542">
+                </div>
+
+                <div class="form-group">
+                    <label for="statusGlpi">Status Chamado GLPI:</label>
+                    <select id="statusGlpi">
+                        <option value="Não Aberto">Não Aberto</option>
+                        <option value="Novo">Novo</option>
+                        <option value="Atribuído">Atribuído</option>
+                        <option value="Solucionado">Solucionado</option>
+                        <option value="Fechado">Fechado</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="form-group full-width">
+                    <label for="problema">Descrição do Problema:</label>
+                    <textarea id="problema" required placeholder="Descreva o problema detalhadamente..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit">Salvar Registro</button>
+        </form>
+
+        <hr>
+
+        <h2>Lista de Chamados</h2>
+
+        <div style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
+            <button id="btnRelatorio" type="button" class="btn-relatorio" onclick="gerarRelatorioCSV()">
+                📊 Gerar Relatório Excel (CSV)
+            </button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Técnico</th>
+                        <th>Departamento</th>
+                        <th>Problema</th>
+                        <th>Status</th>
+                        <th>Nº GLPI</th>
+                        <th>Status GLPI</th>
+                        <th>Data</th>
+                        <th>Ações</th>
+                        <th>Notificar</th> <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaCorpo">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
