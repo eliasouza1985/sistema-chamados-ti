@@ -34,7 +34,7 @@ form.addEventListener('submit', (event) => {
     const status = document.getElementById('status').value;
     const chamadoGlpi = document.getElementById('chamadoGlpi').value.trim() || '---';
     const statusGlpi = document.getElementById('statusGlpi').value;
-    
+
     // Captura e formata a data para o padrão brasileiro (dd/mm/aaaa)
     const dataRaw = document.getElementById('data').value;
     const dataFormatada = dataRaw ? dataRaw.split('-').reverse().join('/') : '---';
@@ -88,9 +88,15 @@ function salvarChamado(chamado) {
 
 // 1. Cadastre aqui os números de WhatsApp dos seus técnicos (com DDD e apenas números)
 const telefonesTecnicos = {
-    "Elia": "5591982339287",  // Substitua pelo número real (Ex: 55 + DDD + Número)
-    "Daniele": "5591981248485",
-    "Raphael": "5591982514451"
+    "Elia Souza": "5591982339287",  // Substitua pelo número real (Ex: 55 + DDD + Número)
+    "Lucas Lima": "5591984845696",
+    "Raphael Paiva": "5591982514451",
+    "David Azevedo": "5591981243528",
+    "Jairo Rodrigues": "5591988074195",
+    "Leonardo Rafael": "5591985120045",
+    "Luiz Gonzaga": "5591991903894",
+    "Max Fontão": "5591993668297",
+    "Osvaldo Junior": "5591989168776"
 };
 
 /**
@@ -122,8 +128,8 @@ function renderizarTabela() {
             classeStatus = 'status-finalizado';
         }
 
-        const problemaResumido = chamado.problema.length > 35 
-            ? chamado.problema.substring(0, 32) + '...' 
+        const problemaResumido = chamado.problema.length > 35
+            ? chamado.problema.substring(0, 32) + '...'
             : chamado.problema;
 
         // ==========================================
@@ -135,11 +141,11 @@ function renderizarTabela() {
         if (telefone) {
             // Texto personalizado que o técnico vai receber
             const textoMensagem = `Olá ${chamado.tecnico}, você tem um novo chamado designado!\n\n` +
-                                  `👤 *Usuário (Cliente):* ${chamado.cliente}\n` +
-                                  `🏢 *Departamento/Setor:* ${chamado.departamento}\n` +
-                                  `🛠️ *Problema:* ${chamado.problema}\n` +
-                                  `🎫 *Nº GLPI:* ${chamado.chamadoGlpi}\n\n` +
-                                  `Favor se deslocar até o setor para prestar o atendimento.`;
+                `👤 *Usuário (Cliente):* ${chamado.cliente}\n` +
+                `🏢 *Departamento/Setor:* ${chamado.departamento}\n` +
+                `🛠️ *Problema:* ${chamado.problema}\n` +
+                `🎫 *Nº GLPI:* ${chamado.chamadoGlpi}\n\n` +
+                `Favor se deslocar até o setor para prestar o atendimento.`;
 
             // Codifica o texto para formato de URL do WhatsApp
             const textoCodificado = encodeURIComponent(textoMensagem);
@@ -193,9 +199,32 @@ function deletarChamado(id) {
 // ==========================================================================
 function gerarRelatorioCSV() {
     const chamados = obterChamados();
+    const dataInicio = document.getElementById('dataInicio').value;
+    const dataFim = document.getElementById('dataFim').value;
 
     if (chamados.length === 0) {
         alert('Não existem chamados registrados para gerar o relatório!');
+        return;
+    }
+
+    let chamadosFiltrados = chamados;
+
+    // Filtra os chamados com base no intervalo de datas, se ambos os campos estiverem preenchidos
+    if (dataInicio && dataFim) {
+        chamadosFiltrados = chamados.filter(chamado => {
+            const partesData = chamado.data.split('/'); // Supondo que a data esteja no formato "dd/mm/aaaa"
+            const dataChamado = new Date(partesData[2], partesData[1] - 1, partesData[0]);
+
+            const inicio = new Date(dataInicio);
+            const fim = new Date(dataFim);
+            inicio.setHours(0, 0, 0); // Considera o início do dia para a data de início
+            fim.setHours(23, 59, 59); // Considera o final do dia para a data de término
+
+            return dataChamado >= inicio && dataChamado <= fim;
+        });
+    }
+    if (chamadosFiltrados.length === 0) {
+        alert('Nenhum chamado encontrado no intervalo de datas selecionado!');
         return;
     }
 
@@ -210,10 +239,10 @@ function gerarRelatorioCSV() {
         'Data de Abertura'
     ];
 
-    const linhas = chamados.map(chamado => {
+    const linhas = chamadosFiltrados.map(chamado => {
         const problemaTratado = chamado.problema.replace(/[\n\r]+/g, ' ').replace(/;/g, ',');
         const clienteTratado = chamado.cliente.replace(/;/g, ',');
-        
+
         return [
             `"${clienteTratado}"`,
             `"${chamado.tecnico}"`,
@@ -232,7 +261,7 @@ function gerarRelatorioCSV() {
 
     const link = document.createElement('a');
     const url = URL.createObjectURL(blob);
-    
+
     const dataHoje = new Date().toLocaleDateString('pt-BR').replace(/\//g, '-');
     link.setAttribute('href', url);
     link.setAttribute('download', `relatorio_chamados_${dataHoje}.csv`);

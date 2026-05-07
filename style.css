@@ -274,5 +274,39 @@ table {
 }
 
 .btn-relatorio:active {
-    transform: scale(0.97);
+    transform: scale(0.60);
+}
+
+.container-relatorio {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.filtros-relatorio {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.campo-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo-filtro label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+.campo-filtro input {
+    padding: 5px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
 }

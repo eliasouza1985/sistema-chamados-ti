@@ -8,13 +8,13 @@
 </head>
 <body>
 
-   <img src="imagens/logo.png" alt="Logo do Suporte" class="logo-sistema">
+<img src="imagens/logo.png" alt="Logo do Suporte" class="logo-sistema">
 
     <div class="container">
         <h1>Controle de Chamados Suporte</h1>
-        
+
         <form id="chamadoForm">
-            
+
             <h2>Cadastrar Novo Chamado</h2>
 
             <div class="grid">
@@ -27,9 +27,15 @@
                     <label for="tecnico">Técnico Responsável:</label>
                     <select id="tecnico" required>
                         <option value="">Selecione...</option>
-                        <option value="Elia">Elia Junior</option>
-                        <option value="Daniele">Daniele Sacramento</option>
-                        <option value="Raphael">Raphael</option>
+                        <option value="Elia Souza">Elia Souza</option>
+                        <option value="Lucas Lima">Lucas Lima </option>
+                        <option value="Raphael Paiva">Raphael Paiva</option>
+                        <option value="David Azevedo">David Azevedo</option>
+                        <option value="Jairo Rodrigues">Jairo Rodrigues</option>
+                        <option value="Leonardo Rafael">Leonardo Rafael</option>
+                        <option value="Luiz Gonzaga">Luiz Gonzaga</option>
+                        <option value="Max Fontão">Max Fontão</option>
+                        <option value="Osvaldo Junior">Osvaldo Junior</option>
                     </select>
                 </div>
 
@@ -37,11 +43,41 @@
                     <label for="departamento">Departamento:</label>
                     <select id="departamento" required>
                         <option value="">Selecione...</option>
-                        <option value="Administrativo">Administrativo</option>
-                        <option value="Financeiro">Financeiro</option>
-                        <option value="RH">RH</option>
-                        <option value="Operações">Operações</option>
-                        <option value="TI">TI</option>
+                        <option value="Apoio a Presidência">Apoio a Presidência</option>
+                        <option value="Almoxarifado">Almoxarifado</option>
+                        <option value="1º Controladoria">1º Controladoria</option>
+                        <option value="2º Controladoria">2º Controladoria</option>
+                        <option value="3º Controladoria">3º Controladoria</option>
+                        <option value="4º Controladoria">4º Controladoria</option>
+                        <option value="5º Controladoria">5º Controladoria</option>
+                        <option value="6º Controladoria">6º Controladoria</option>
+                        <option value="7º Controladoria">7º Controladoria</option>
+                        <option value="Cerimonial">Cerimonial</option>
+                        <option value="Cemop">Cemop</option>
+                        <option value="Comunicação">Comunicação</option>
+                        <option value="Corregedoria">Corregedoria</option>
+                        <option value="Dad">Dad</option>
+                        <option value="Diorf">Diorf</option>
+                        <option value="Diplamfce 3º">Diplamfce 3º</option>
+                        <option value="Diplamfce 1º">Diplamfce 1º</option>
+                        <option value="Djur">Djur</option>
+                        <option value="Escola de Contas">Escola de Contas</option>
+                        <option value="Gab.Cons.Subs. Marcia Costa">Gab.Cons.Subs. Marcia Costa</option>
+                        <option value="Gab.Cons.Subs.Adriana Oliveira">Gab.Cons.Subs. Adriana Oliveira</option>
+                        <option value="Gab.Cons.Subs.Rogerio Almeida">Gab.Cons.Subs. Rogerio Almeida</option>
+                        <option value="Gab.Cons.Subs.Juscelino Nascimento">Gab.Cons.Subs.Juscelino Nascimento</option>
+                        <option value="Gab.Cons.Cezar Colares">Gab.Cons.Cezar Colares</option>
+                        <option value="Gab.Cons.Lucio Vale">Gab.Cons.Lucio Vale</option>
+                        <option value="Gab.Cons.Mara.Lucia">Gab.Cons.Mara.Lucia</option>
+                        <option value="Gab.Cons.Antônio Guimarães">Gab.Cons.Antônio Guimarães</option>
+                        <option value="Gab.Cons.José Carlos">Gab.Cons.José Carlos</option>
+                        <option value="Gab.Cons.Ann Pontes">Gab.Cons.Ann Pontes</option>
+                        <option value="Gab.Cons.Daniel Lavareda">Gab.Cons.Daniel Lavareda</option>
+                        <option value="Npt">Npt</option>
+                        <option value="Nap">Nap</option>
+                        <option value="Nie">Nie</option>
+                        <option value="Npt">Npt</option>
+
                     </select>
                 </div>
 
@@ -92,11 +128,21 @@
 
         <h2>Lista de Chamados</h2>
 
-        <div style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
-            <button id="btnRelatorio" type="button" class="btn-relatorio" onclick="gerarRelatorioCSV()">
-                📊 Gerar Relatório Excel (CSV)
-            </button>
+        <div class="container-relatorio">
+    <div class="filtros-relatorio">
+        <div class="campo-filtro">
+            <label for="dataInicio">Início:</label>
+            <input type="date" id="dataInicio">
         </div>
+        <div class="campo-filtro">
+            <label for="dataFim">Fim:</label>
+            <input type="date" id="dataFim">
+        </div>
+        <button id="btnRelatorio" type="button" class="btn-relatorio" onclick="gerarRelatorioCSV()">
+            📊 Gerar Relatório por Período
+        </button>
+    </div>
+</div>
         <div class="table-container">
             <table>
                 <thead>
