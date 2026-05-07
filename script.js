@@ -270,4 +270,30 @@ function gerarRelatorioCSV() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    document.addEventListener('DOMContentLoaded', () => {
+    definirDataAtual();
+    renderizarTabela();
+    atualizarDashboard(); // Adicione isso aqui
+});
 }
+
+/**
+ * Calcula as estatísticas e atualiza os cards no topo da página
+ */
+function atualizarDashboard() {
+    const chamados = obterChamados();
+
+    const total = chamados.length;
+    const pendentes = chamados.filter(c => c.status === 'Pendente').length;
+    const andamento = chamados.filter(c => c.status === 'Em Andamento').length;
+    const finalizados = chamados.filter(c => c.status === 'Finalizado').length;
+
+    // Atualiza os elementos na tela
+    document.getElementById('totalChamados').textContent = total;
+    document.getElementById('totalPendentes').textContent = pendentes;
+    document.getElementById('totalAndamento').textContent = andamento;
+    document.getElementById('totalFinalizados').textContent = finalizados;
+}
+
+// Sempre que salvar ou excluir, chame:
+atualizarDashboard();

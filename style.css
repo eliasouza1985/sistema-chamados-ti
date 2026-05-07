@@ -310,3 +310,37 @@ table {
     border: 1px solid #cbd5e0;
     border-radius: 4px;
 }
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.card-status {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card-status h3 {
+    margin: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.card-status p {
+    margin: 5px 0 0;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Cores dos Cards */
+.card-total { background-color: #4a5568; }
+.card-pendente { background-color: #e53e3e; }
+.card-andamento { background-color: #dd6b20; }
+.card-finalizado { background-color: #38a169; }
