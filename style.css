@@ -1,45 +1,46 @@
 /* ==========================================================================
-CONFIGURAÇÕES GERAIS E LAYOUT
+   CONFIGURAÇÕES GERAIS E LAYOUT
    ========================================================================== */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #95979c;
+    background-color: #f0f2f5; /* Cinza claro para destacar o container branco */
     color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+
 h1 {
     color: #1a3a5a;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
 h2 {
     color: #2c3e50;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     border-bottom: 2px solid #edf2f7;
-    padding-bottom: 8px;
-    font-size: 1.2rem;
+    padding-bottom: 10px;
+    font-size: 1.3rem;
 }
 
 .container {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
     box-sizing: border-box;
 }
 
 /* ==========================================================================
-ESTILIZAÇÃO DO FORMULÁRIO (Cria as colunas e campos)
+   ESTILIZAÇÃO DO FORMULÁRIO
    ========================================================================== */
 form {
     width: 100%;
@@ -47,9 +48,9 @@ form {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
 }
 
 .form-group {
@@ -57,14 +58,13 @@ form {
     flex-direction: column;
 }
 
-/* Campos de texto completo ou área de texto que ocupam toda a largura */
 .full-width {
     grid-column: 1 / -1;
 }
 
 label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     font-weight: 600;
     color: #4a5568;
     font-size: 14px;
@@ -72,14 +72,12 @@ label {
 
 input, select, textarea {
     width: 100%;
-    padding: 10px 12px;
+    padding: 12px;
     border: 1px solid #cbd5e1;
-    border-radius: 5px;
+    border-radius: 6px;
     box-sizing: border-box;
     font-size: 14px;
-    background-color: #fff;
-    color: #333;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: all 0.2s;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -90,78 +88,122 @@ input:focus, select:focus, textarea:focus {
 
 textarea {
     resize: vertical;
-    height: 80px;
+    height: 90px;
 }
 
-/* Botão de Envio */
 button[type="submit"] {
     background-color: #0b0fe2;
     color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
+    padding: 14px 20px;
+    border-radius: 6px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    width: 50%;
+    width: 40%;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    transition: background-color 0.2s, transform 0.1s;
-    justify-content: center;
+    margin: 20px auto;
+    transition: all 0.2s;
 }
 
 button[type="submit"]:hover {
-    background-color: #0b0fe2;
+    background-color: #080cb1;
+    transform: translateY(-1px);
 }
 
-button[type="submit"]:active {
-    transform: scale(0.98);
-}
-
-/* Separador Visual */
 hr {
     border: 0;
     height: 1px;
     background: #e2e8f0;
-    margin: 30px 0;
+    margin: 50px 0;
     width: 100%;
-    max-width: 1100px;
 }
 
 /* ==========================================================================
-   ESTILIZAÇÃO DA TABELA (Responsiva para telas menores)
+   DASHBOARD
+   ========================================================================== */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card-status {
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-status h3 {
+    margin: 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-status p {
+    margin: 10px 0 0;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.card-total { background-color: #2d3748; }
+.card-pendente { background-color: #e53e3e; }
+.card-andamento { background-color: #dd6b20; }
+.card-finalizado { background-color: #38a169; }
+
+/* ==========================================================================
+   TABELA COM ROLAGEM INTERNA E CABEÇALHO FIXO
    ========================================================================== */
 .table-container {
     width: 100%;
+    max-height: 500px; /* Altura máxima antes de rolar */
+    overflow-y: auto;
     overflow-x: auto;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
-    background-color: #fff;
+    position: relative;
+}
+
+/* Personalização da Barra de Rolagem */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.table-container::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 10px;
+}
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    text-align: left;
-    font-size: 14px;
-    min-width: 1000px; /* Impede as colunas de espremerem */
+    min-width: 1100px;
 }
 
-th {
+/* Cabeçalho Fixo (Sticky) */
+thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     background-color: #f8f9fa;
-    color: #4a5568;
-    padding: 14px 16px;
-    font-weight: 600;
+    padding: 16px;
     border-bottom: 2px solid #e2e8f0;
+    color: #4a5568;
 }
 
 td {
-    padding: 12px 16px;
+    padding: 16px;
     border-bottom: 1px solid #edf2f7;
-    vertical-align: middle;
     color: #4a5568;
 }
 
@@ -170,177 +212,68 @@ tr:hover {
 }
 
 /* ==========================================================================
-   ETIQUETAS COLORIDAS (BADGES DE STATUS)
+   STATUS SELECT E BOTÕES
    ========================================================================== */
-.status-badge {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 11px;
+.status-select {
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #cbd5e0;
+    font-size: 12px;
     font-weight: bold;
+    cursor: pointer;
+    width: 140px;
     text-align: center;
 }
 
-.status-pendente {
-    background-color: #feebc8;
-    color: #c05621;
+select.status-pendente { background-color: #fed7d7 !important; color: #c53030 !important; }
+select.status-andamento { background-color: #fefcbf !important; color: #b7791f !important; }
+select.status-finalizado { background-color: #c6f6d5 !important; color: #2f855a !important; }
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
 }
 
-.status-andamento {
-    background-color: #ebf8ff;
-    color: #2b6cb0;
-}
-
-.status-finalizado {
-    background-color: #c6f6d5;
-    color: #22543d;
-}
-
-/* ==========================================================================
-   AÇÕES (Botão de Excluir)
-   ========================================================================== */
 .btn-excluir {
-    background-color: #fed7d7;
-    color: #ee0505;
-    border: 1px solid #feb2b2;
+    background-color: #fff;
+    color: #e53e3e;
+    border: 1px solid #fed7d7;
     padding: 6px 12px;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 12px;
-    font-weight: 600;
-    transition: background-color 0.2s, color 0.2s;
+    transition: all 0.2s;
 }
 
 .btn-excluir:hover {
     background-color: #e53e3e;
     color: white;
-    border-color: #e53e3e;
 }
 
-.logo-sistema {
-    display: block;      /* Permite centralizar usando margens */
-    max-width: 200px;    /* Define a largura máxima da imagem (mude o valor como preferir) */
-    height: auto;        /* Mantém a proporção da imagem sem achatar */
-    margin: 0 auto 10px auto; /* Centraliza na tela e dá espaço de 20px abaixo dela */
-}
-
-/* Botão do WhatsApp na Tabela */
-.btn-whatsapp {
-    display: inline-block;
-    background-color: #25d366;
-    color: white;
-    text-decoration: none;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.2s, transform 0.1s;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.btn-whatsapp:hover {
-    background-color: #128c7e;
-    color: white;
-}
-
-.btn-whatsapp:active {
-    transform: scale(0.95);
-}
-
-/* Ajuste na largura mínima da tabela para comportar a nova coluna */
-table {
-    min-width: 1100px;
-}
-
-/* Botão Gerar Relatório */
-.btn-relatorio {
-    background-color: #17a2b8 !important; /* Azul escuro/Ciano profissional */
-    color: white !important;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    width: auto !important; /* Garante que não herde os 80% do botão de salvar */
-    display: inline-block !important;
-    margin: 0 !important;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.btn-relatorio:hover {
-    background-color: #138496 !important;
-}
-
-.btn-relatorio:active {
-    transform: scale(0.60);
-}
-
+/* RELATÓRIO */
 .container-relatorio {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     background: #f8f9fa;
     padding: 15px;
     border-radius: 8px;
     border: 1px solid #e2e8f0;
+    gap: 10px;
 }
 
-.filtros-relatorio {
-    display: flex;
-    align-items: flex-end;
-    gap: 15px;
-}
-
-.campo-filtro {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.campo-filtro label {
-    font-size: 14px;
+.btn-relatorio {
+    background-color: #17a2b8 !important;
+    color: white !important;
+    padding: 10px 10px;
+    border-radius: 6px;
     font-weight: bold;
-    color: #4a5568;
+    cursor: pointer;
+    border: none;
 }
-
-.campo-filtro input {
-    padding: 5px;
-    border: 1px solid #cbd5e0;
-    border-radius: 4px;
-}
-
-.dashboard {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.card-status {
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    color: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.card-status h3 {
-    margin: 0;
-    font-size: 14px;
-    text-transform: uppercase;
-    opacity: 0.9;
-}
-
-.card-status p {
-    margin: 5px 0 0;
-    font-size: 32px;
-    font-weight: bold;
-}
-
-/* Cores dos Cards */
-.card-total { background-color: #4a5568; }
-.card-pendente { background-color: #e53e3e; }
-.card-andamento { background-color: #dd6b20; }
-.card-finalizado { background-color: #38a169; }

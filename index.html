@@ -1,190 +1,222 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Chamados TI & GLPI</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sistema de Chamados TI & GLPI</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
 
-<img src="imagens/logo.png" alt="Logo do Suporte" class="logo-sistema">
+        <img src="imagens/logo.png" alt="Logo do Suporte" class="logo-sistema">
 
-    <div class="container">
-        <h1>Controle de Chamados Suporte</h1>
+        <div class="container">
+            <h1>Controle de Chamados Suporte</h1>
 
-        <form id="chamadoForm">
+            <form id="chamadoForm">
 
-            <h2>Cadastrar Novo Chamado</h2>
+                <h2>Cadastrar Novo Chamado</h2>
 
-            <div class="grid">
-                <div class="form-group">
-                    <label for="cliente">Usuário (Cliente):</label>
-                    <input type="text" id="cliente" required placeholder="Nome do usuário">
+                <div class="grid">
+                    <div class="form-group">
+                        <label for="cliente">Usuário (Cliente):</label>
+                        <input type="text" id="cliente" required
+                            placeholder="Nome do usuário">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tecnico">Técnico Responsável:</label>
+                        <select id="tecnico" required>
+                            <option value>Selecione...</option>
+                            <option value="Elia Souza">Elia Souza</option>
+                            <option value="Lucas Lima">Lucas Lima </option>
+                            <option value="Raphael Paiva">Raphael Paiva</option>
+                            <option value="David Azevedo">David Azevedo</option>
+                            <option value="Jairo Rodrigues">Jairo
+                                Rodrigues</option>
+                            <option value="Leonardo Rafael">Leonardo
+                                Rafael</option>
+                            <option value="Luiz Gonzaga">Luiz Gonzaga</option>
+                            <option value="Max Fontão">Max Fontão</option>
+                            <option value="Osvaldo Junior">Osvaldo
+                                Junior</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="departamento">Departamento:</label>
+                        <select id="departamento" required>
+                            <option value>Selecione...</option>
+                            <option value="Apoio a Presidência">Apoio a
+                                Presidência</option>
+                            <option value="Almoxarifado">Almoxarifado</option>
+                            <option value="1º Controladoria">1º
+                                Controladoria</option>
+                            <option value="2º Controladoria">2º
+                                Controladoria</option>
+                            <option value="3º Controladoria">3º
+                                Controladoria</option>
+                            <option value="4º Controladoria">4º
+                                Controladoria</option>
+                            <option value="5º Controladoria">5º
+                                Controladoria</option>
+                            <option value="6º Controladoria">6º
+                                Controladoria</option>
+                            <option value="7º Controladoria">7º
+                                Controladoria</option>
+                            <option value="Cerimonial">Cerimonial</option>
+                            <option value="Cemop">Cemop</option>
+                            <option value="Comunicação">Comunicação</option>
+                            <option value="Corregedoria">Corregedoria</option>
+                            <option value="Dad">Dad</option>
+                            <option value="Diorf">Diorf</option>
+                            <option value="Diplamfce 3º">Diplamfce 3º</option>
+                            <option value="Diplamfce 1º">Diplamfce 1º</option>
+                            <option value="Djur">Djur</option>
+                            <option value="Escola de Contas">Escola de
+                                Contas</option>
+                            <option
+                                value="Gab.Cons.Subs. Marcia Costa">Gab.Cons.Subs.
+                                Marcia Costa</option>
+                            <option
+                                value="Gab.Cons.Subs.Adriana Oliveira">Gab.Cons.Subs.
+                                Adriana Oliveira</option>
+                            <option
+                                value="Gab.Cons.Subs.Rogerio Almeida">Gab.Cons.Subs.
+                                Rogerio Almeida</option>
+                            <option
+                                value="Gab.Cons.Subs.Juscelino Nascimento">Gab.Cons.Subs.Juscelino
+                                Nascimento</option>
+                            <option
+                                value="Gab.Cons.Cezar Colares">Gab.Cons.Cezar
+                                Colares</option>
+                            <option value="Gab.Cons.Lucio Vale">Gab.Cons.Lucio
+                                Vale</option>
+                            <option
+                                value="Gab.Cons.Mara.Lucia">Gab.Cons.Mara.Lucia</option>
+                            <option
+                                value="Gab.Cons.Antônio Guimarães">Gab.Cons.Antônio
+                                Guimarães</option>
+                            <option value="Gab.Cons.José Carlos">Gab.Cons.José
+                                Carlos</option>
+                            <option value="Gab.Cons.Ann Pontes">Gab.Cons.Ann
+                                Pontes</option>
+                            <option
+                                value="Gab.Cons.Daniel Lavareda">Gab.Cons.Daniel
+                                Lavareda</option>
+                            <option value="Npt">Npt</option>
+                            <option value="Nap">Nap</option>
+                            <option value="Nie">Nie</option>
+                            <option value="Npt">Npt</option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="data">Data de Abertura:</label>
+                        <input type="date" id="data" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="tecnico">Técnico Responsável:</label>
-                    <select id="tecnico" required>
-                        <option value="">Selecione...</option>
-                        <option value="Elia Souza">Elia Souza</option>
-                        <option value="Lucas Lima">Lucas Lima </option>
-                        <option value="Raphael Paiva">Raphael Paiva</option>
-                        <option value="David Azevedo">David Azevedo</option>
-                        <option value="Jairo Rodrigues">Jairo Rodrigues</option>
-                        <option value="Leonardo Rafael">Leonardo Rafael</option>
-                        <option value="Luiz Gonzaga">Luiz Gonzaga</option>
-                        <option value="Max Fontão">Max Fontão</option>
-                        <option value="Osvaldo Junior">Osvaldo Junior</option>
-                    </select>
+                <div class="grid">
+                    <div class="form-group">
+                        <label for="status">Status Interno:</label>
+                        <select id="status">
+                            <option value="Pendente">Pendente</option>
+                            <option value="Em Andamento">Em Andamento</option>
+                            <option value="Finalizado">Finalizado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="chamadoGlpi">Nº Chamado GLPI:</label>
+                        <input type="text" id="chamadoGlpi"
+                            placeholder="Ex: 5542">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="statusGlpi">Status Chamado GLPI:</label>
+                        <select id="statusGlpi">
+                            <option value="Não Aberto">Não Aberto</option>
+                            <option value="Novo">Novo</option>
+                            <option value="Atribuído">Atribuído</option>
+                            <option value="Solucionado">Solucionado</option>
+                            <option value="Fechado">Fechado</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="departamento">Departamento:</label>
-                    <select id="departamento" required>
-                        <option value="">Selecione...</option>
-                        <option value="Apoio a Presidência">Apoio a Presidência</option>
-                        <option value="Almoxarifado">Almoxarifado</option>
-                        <option value="1º Controladoria">1º Controladoria</option>
-                        <option value="2º Controladoria">2º Controladoria</option>
-                        <option value="3º Controladoria">3º Controladoria</option>
-                        <option value="4º Controladoria">4º Controladoria</option>
-                        <option value="5º Controladoria">5º Controladoria</option>
-                        <option value="6º Controladoria">6º Controladoria</option>
-                        <option value="7º Controladoria">7º Controladoria</option>
-                        <option value="Cerimonial">Cerimonial</option>
-                        <option value="Cemop">Cemop</option>
-                        <option value="Comunicação">Comunicação</option>
-                        <option value="Corregedoria">Corregedoria</option>
-                        <option value="Dad">Dad</option>
-                        <option value="Diorf">Diorf</option>
-                        <option value="Diplamfce 3º">Diplamfce 3º</option>
-                        <option value="Diplamfce 1º">Diplamfce 1º</option>
-                        <option value="Djur">Djur</option>
-                        <option value="Escola de Contas">Escola de Contas</option>
-                        <option value="Gab.Cons.Subs. Marcia Costa">Gab.Cons.Subs. Marcia Costa</option>
-                        <option value="Gab.Cons.Subs.Adriana Oliveira">Gab.Cons.Subs. Adriana Oliveira</option>
-                        <option value="Gab.Cons.Subs.Rogerio Almeida">Gab.Cons.Subs. Rogerio Almeida</option>
-                        <option value="Gab.Cons.Subs.Juscelino Nascimento">Gab.Cons.Subs.Juscelino Nascimento</option>
-                        <option value="Gab.Cons.Cezar Colares">Gab.Cons.Cezar Colares</option>
-                        <option value="Gab.Cons.Lucio Vale">Gab.Cons.Lucio Vale</option>
-                        <option value="Gab.Cons.Mara.Lucia">Gab.Cons.Mara.Lucia</option>
-                        <option value="Gab.Cons.Antônio Guimarães">Gab.Cons.Antônio Guimarães</option>
-                        <option value="Gab.Cons.José Carlos">Gab.Cons.José Carlos</option>
-                        <option value="Gab.Cons.Ann Pontes">Gab.Cons.Ann Pontes</option>
-                        <option value="Gab.Cons.Daniel Lavareda">Gab.Cons.Daniel Lavareda</option>
-                        <option value="Npt">Npt</option>
-                        <option value="Nap">Nap</option>
-                        <option value="Nie">Nie</option>
-                        <option value="Npt">Npt</option>
-
-                    </select>
+                <div class="grid">
+                    <div class="form-group full-width">
+                        <label for="problema">Descrição do Problema:</label>
+                        <textarea id="problema" required
+                            placeholder="Descreva o problema detalhadamente..."></textarea>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="data">Data de Abertura:</label>
-                    <input type="date" id="data" required>
+                <button type="submit">Salvar Registro</button>
+            </form>
+
+            <hr>
+            <div class="dashboard">
+                <div class="card-status card-total">
+                    <h3>Total</h3>
+                    <p id="totalChamados">0</p>
+                </div>
+                <div class="card-status card-pendente">
+                    <h3>Pendentes</h3>
+                    <p id="totalPendentes">0</p>
+                </div>
+                <div class="card-status card-andamento">
+                    <h3>Em Andamento</h3>
+                    <p id="totalAndamento">0</p>
+                </div>
+                <div class="card-status card-finalizado">
+                    <h3>Finalizados</h3>
+                    <p id="totalFinalizados">0</p>
                 </div>
             </div>
 
-            <div class="grid">
-                <div class="form-group">
-                    <label for="status">Status Interno:</label>
-                    <select id="status">
-                        <option value="Pendente">Pendente</option>
-                        <option value="Em Andamento">Em Andamento</option>
-                        <option value="Finalizado">Finalizado</option>
-                    </select>
-                </div>
+            <h2>Lista de Chamados</h2>
 
-                <div class="form-group">
-                    <label for="chamadoGlpi">Nº Chamado GLPI:</label>
-                    <input type="text" id="chamadoGlpi" placeholder="Ex: 5542">
-                </div>
-
-                <div class="form-group">
-                    <label for="statusGlpi">Status Chamado GLPI:</label>
-                    <select id="statusGlpi">
-                        <option value="Não Aberto">Não Aberto</option>
-                        <option value="Novo">Novo</option>
-                        <option value="Atribuído">Atribuído</option>
-                        <option value="Solucionado">Solucionado</option>
-                        <option value="Fechado">Fechado</option>
-                    </select>
+            <div class="container-relatorio">
+                <div class="filtros-relatorio">
+                    <div class="campo-filtro">
+                        <label for="dataInicio">Início:</label>
+                        <input type="date" id="dataInicio">
+                    </div>
+                    <div class="campo-filtro">
+                        <label for="dataFim">Fim:</label>
+                        <input type="date" id="dataFim">
+                    </div>
+                    <button id="btnRelatorio" type="button"
+                        class="btn-relatorio" onclick="gerarRelatorioCSV()">
+                        📊 Gerar Relatório por Período
+                    </button>
                 </div>
             </div>
-
-            <div class="grid">
-                <div class="form-group full-width">
-                    <label for="problema">Descrição do Problema:</label>
-                    <textarea id="problema" required placeholder="Descreva o problema detalhadamente..."></textarea>
-                </div>
-            </div>
-
-            <button type="submit">Salvar Registro</button>
-        </form>
-
-        <hr>
-        <div class="dashboard">
-    <div class="card-status card-total">
-        <h3>Total</h3>
-        <p id="totalChamados">0</p>
-    </div>
-    <div class="card-status card-pendente">
-        <h3>Pendentes</h3>
-        <p id="totalPendentes">0</p>
-    </div>
-    <div class="card-status card-andamento">
-        <h3>Em Andamento</h3>
-        <p id="totalAndamento">0</p>
-    </div>
-    <div class="card-status card-finalizado">
-        <h3>Finalizados</h3>
-        <p id="totalFinalizados">0</p>
-    </div>
-</div>
-
-<h2>Lista de Chamados</h2>
-
-
-
-        <div class="container-relatorio">
-    <div class="filtros-relatorio">
-        <div class="campo-filtro">
-            <label for="dataInicio">Início:</label>
-            <input type="date" id="dataInicio">
-        </div>
-        <div class="campo-filtro">
-            <label for="dataFim">Fim:</label>
-            <input type="date" id="dataFim">
-        </div>
-        <button id="btnRelatorio" type="button" class="btn-relatorio" onclick="gerarRelatorioCSV()">
-            📊 Gerar Relatório por Período
-        </button>
-    </div>
-</div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Usuário</th>
-                        <th>Técnico</th>
-                        <th>Departamento</th>
-                        <th>Problema</th>
-                        <th>Status</th>
-                        <th>Nº GLPI</th>
-                        <th>Status GLPI</th>
-                        <th>Data</th>
-                        <th>Ações</th>
-                        <th>Notificar</th> <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody id="tabelaCorpo">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Técnico</th>
+                            <th>Departamento</th>
+                            <th>Problema</th>
+                            <th>Status</th>
+                            <th>Nº GLPI</th>
+                            <th>Status GLPI</th>
+                            <th>Data</th>
+                            <th>Ações</th>
+                            <th>Notificar</th> <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaCorpo">
                     </tbody>
-            </table>
+                </table>
+            </div>
         </div>
-    </div>
 
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
